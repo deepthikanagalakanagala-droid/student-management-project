@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: student-backend
+  template:
+    metadata:
+      labels:
+        app: student-backend
+    spec:
+      containers:
+        - name: backend
+          image: deepthikanagala/student-management-backend:v1
+          ports:
+            - containerPort: 8000
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: student-db-secret
+                  key: POSTGRES_PASSWORD
+            - name: DATABASE_URL
+              value: "postgresql+psycopg://students:$(POSTGRES_PASSWORD)@db:5432/students"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: student-backend
+  ports:
+    - port: 8000
+      targetPort: 8000
+  type: ClusterIP
