@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CampusFlow — Student Management System (Project #1)
 
 Full-stack student management app based on Project #1 of the supplied **DevOps Project - Docker and Jenkins** PDF: React frontend, FastAPI backend, PostgreSQL database, three Docker Compose services, and AWS EC2 deployment.
@@ -94,3 +95,7 @@ For updating and deleting, use `PUT /api/students/{id}` and `DELETE /api/student
 - No TLS in the base project.
 - Database tables are created at app startup; production systems should use migrations.
 - Docker build/runtime has not been executed in the artifact-generation environment; run the commands above to validate on your machine.
+=======
+# student-management-project
+A web-based Student Management System to add, view, update, search, and delete student details.
+>>>>>>> 4147edf3a4611b13d6de9a34c3c6eea8aec20720
